@@ -52,7 +52,7 @@ def runner():
 
     bpy.context.scene.render.resolution_x = 256
     bpy.context.scene.render.resolution_y = 256
-    bpy.context.scene.render.engine = 'BLENDER_EEVEE_NEXT'
+    bpy.context.scene.render.engine = 'BLENDER_EEVEE'
     bpy.context.scene.render.film_transparent = True
     bpy.context.scene.render.filepath = args.preview
     bpy.ops.render.render(write_still=True)

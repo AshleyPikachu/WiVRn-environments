@@ -8,6 +8,7 @@ SCRIPT_DIR=os.path.dirname(__file__)
 BASE_DIR=os.path.dirname(SCRIPT_DIR)
 
 ENV_DIR = os.path.join(BASE_DIR, "environments")
+CWD = os.getcwd()
 
 def export(blender: str, src: str, dst: str, preview: str):
     subprocess.check_call([blender, "-b", "-P", os.path.join(SCRIPT_DIR, "blender_gltf_converter.py"), "--", src, dst, preview])
@@ -23,8 +24,8 @@ def export_all(blender: str) -> list:
             if f.endswith(".blend"):
 
                 base = f[:-6]
-                out = f"{base}.glb"
-                screenshot = f"{base}.png"
+                out = os.path.join(CWD, f"{base}.glb")
+                screenshot = os.path.join(CWD, f"{base}.png")
 
                 m = json.load(open(os.path.join(dir, f"{base}.json")))
 
