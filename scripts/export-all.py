@@ -24,12 +24,12 @@ def export_all(blender: str) -> list:
             if f.endswith(".blend"):
 
                 base = f[:-6]
-                out = os.path.join(CWD, f"{base}.glb")
-                screenshot = os.path.join(CWD, f"{base}.png")
+                out = f"{base}.glb"
+                screenshot = f"{base}.png"
 
                 m = json.load(open(os.path.join(dir, f"{base}.json")))
 
-                export(blender, os.path.join(dir, f), out, screenshot)
+                export(blender, os.path.join(dir, f), os.path.join(CWD, out), os.path.join(CWD, screenshot))
                 m["url"] = out
                 m["size"] = os.stat(out).st_size
                 m["screenshot"] = screenshot
